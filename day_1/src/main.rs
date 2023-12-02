@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 fn main() {
     let input = std::fs::read_to_string("input").unwrap();
     println!("{}", part_one(&input));
@@ -18,27 +16,28 @@ fn part_one(input: &str) -> u32 {
 }
 
 fn part_two(input: &str) -> u32 {
-    let mut map = HashMap::new();
-    map.insert("zero", 0);
-    map.insert("one", 1);
-    map.insert("two", 2);
-    map.insert("three", 3);
-    map.insert("four", 4);
-    map.insert("five", 5);
-    map.insert("six", 6);
-    map.insert("seven", 7);
-    map.insert("eight", 8);
-    map.insert("nine", 9);
-    map.insert("0", 0);
-    map.insert("1", 1);
-    map.insert("2", 2);
-    map.insert("3", 3);
-    map.insert("4", 4);
-    map.insert("5", 5);
-    map.insert("6", 6);
-    map.insert("7", 7);
-    map.insert("8", 8);
-    map.insert("9", 9);
+    let nums = [
+        ("zero", 0),
+        ("one", 1),
+        ("two", 2),
+        ("three", 3),
+        ("four", 4),
+        ("five", 5),
+        ("six", 6),
+        ("seven", 7),
+        ("eight", 8),
+        ("nine", 9),
+        ("0", 0),
+        ("1", 1),
+        ("2", 2),
+        ("3", 3),
+        ("4", 4),
+        ("5", 5),
+        ("6", 6),
+        ("7", 7),
+        ("8", 8),
+        ("9", 9),
+    ];
 
     input
         .lines()
@@ -47,8 +46,9 @@ fn part_two(input: &str) -> u32 {
             let mut last = None;
 
             let mut chars = line.chars();
+
             loop {
-                for (k, v) in &map {
+                for (k, v) in nums {
                     if chars.as_str().starts_with(k) {
                         first = Some(first.unwrap_or(v));
                         last = Some(v);
